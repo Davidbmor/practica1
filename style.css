@@ -5,6 +5,9 @@
     position: relative;
 }
 
+.contenedores-cartas{
+    display: flex;
+}
 .elemento {
     width: 100px;
     height: 100px;

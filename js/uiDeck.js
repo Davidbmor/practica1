@@ -1,7 +1,6 @@
 export const uiDeck = {
     init: () => {
         const cards = [];
-
         ['oros', 'copas', 'espadas', 'bastos'].forEach((palo) => {
             for (let i = 1; i <= 12; i++) {
                 cards.push({
@@ -10,8 +9,7 @@ export const uiDeck = {
                 });
             }
         });
-
-        return cards; 
+        return cards;
     },
 
     generar: (contenedorSelector) => {
@@ -21,14 +19,18 @@ export const uiDeck = {
             return;
         }
 
-        const cards = uiDeck.init(); 
+        const cards = uiDeck.init();
         const cartasWrapper = document.createElement("div"); 
         cartasWrapper.style.display = "flex";
         cartasWrapper.style.flexWrap = "wrap"; 
 
-        cards.forEach((card) => {
+        cards.forEach((card, index) => {
             const clonedContainer = baseContainer.cloneNode(true);
+            clonedContainer.id = `carta-${index}`;
+            clonedContainer.classList.add("carta");
+            clonedContainer.setAttribute("draggable", "true");
             clonedContainer.style.display = "flex"; 
+
             const children = clonedContainer.children;
             if (children.length >= 3) {
                 children[0].textContent = card.numero; 
@@ -38,6 +40,7 @@ export const uiDeck = {
 
             cartasWrapper.appendChild(clonedContainer);
         });
+
         document.body.appendChild(cartasWrapper);
     }
-}
+};
