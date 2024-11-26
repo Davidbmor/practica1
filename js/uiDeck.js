@@ -21,6 +21,7 @@ export const uiDeck = {
 
         const cards = uiDeck.init();
         const cartasWrapper = document.createElement("div"); 
+        cartasWrapper.id = "cartas-wrapper"; 
         cartasWrapper.style.display = "flex";
         cartasWrapper.style.flexWrap = "wrap"; 
 
@@ -29,6 +30,7 @@ export const uiDeck = {
             clonedContainer.id = `carta-${index}`;
             clonedContainer.classList.add("carta");
             clonedContainer.setAttribute("draggable", "true");
+            clonedContainer.dataset.palo = card.palo; 
             clonedContainer.style.display = "flex"; 
 
             const children = clonedContainer.children;
@@ -41,6 +43,11 @@ export const uiDeck = {
             cartasWrapper.appendChild(clonedContainer);
         });
 
+   
+        const existingWrapper = document.getElementById("cartas-wrapper");
+        if (existingWrapper) {
+            existingWrapper.remove();
+        }
         document.body.appendChild(cartasWrapper);
     }
 };
