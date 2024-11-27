@@ -31,6 +31,7 @@
     height: 250px;
     margin: 2rem;
     display: none;
+    border: 1px solid black;
 }
 
 .container-t>div {

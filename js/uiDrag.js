@@ -12,8 +12,10 @@ export const uiDrag = {
                     alert(`Solo puedes colocar cartas del palo ${allowedPalo} aquí.`);
                     return; 
                 }
-                draggedElement.style.position = "relative";
-                draggedElement.style.left = "0px";
+
+                draggedElement.style.position = "absolute"; // Asegura posición absoluta para superposición.
+                draggedElement.style.left = "0px"; // Mantén el eje horizontal alineado.
+                // Aplica un desplazamiento fijo hacia abajo para cada carta
                 draggedElement.style.top = `${contenedor.children.length * 10}px`; 
 
                 contenedor.appendChild(draggedElement);
